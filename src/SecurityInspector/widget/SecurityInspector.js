@@ -53,6 +53,7 @@ define([
         randered: false,
         objectsTable: "",
         objectsDataSet: [],
+        isVisible: true,
 
 
         // dojo.declare.constructor is called to construct the widget instance. Implement to initialize non-primitive properties.
@@ -62,6 +63,10 @@ define([
 
         // dijit._WidgetBase.postCreate is called after constructing the widget. Implement to do extra setup work.
         postCreate: function () {
+            if (!this.isVisible) {
+                $(".squareBox").remove();
+                return;
+            }
             var key, table, self = this, data, objectsJSON = mx.meta.getMap(), entityList = [];
             logger.debug(this.id + ".postCreate");
             //this._updateObjectsTable = this._updateObjectsTable.bind(this);
@@ -96,6 +101,9 @@ define([
             });
         },
         _updateObjectsTable : function (entityName) {
+            if (!this.isVisible) {
+                return;
+            }
             this._fetchNewData(entityName);
         },
 
