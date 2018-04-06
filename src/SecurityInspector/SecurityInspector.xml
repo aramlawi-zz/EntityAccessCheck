@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="SecurityInspector.widget.SecurityInspector" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>SecurityInspector</name>
+    <description>Check Entity Access</description>
+
+    <icon />
+
+    <properties>
+      <property key="translatableMessage" type="string">
+      <caption>Message</caption>
+       <category>Data source</category>
+       <description>A hardcoded message</description>
+      </property>
+    </properties>
+</widget>

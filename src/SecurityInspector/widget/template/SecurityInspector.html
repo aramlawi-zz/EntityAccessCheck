@@ -1,0 +1,35 @@
+<div>
+  <div class="squareBoxClosed squareBox" data-dojo-attach-event='onclick: _onClickHandler'></div>
+  <div class="squareBoxOpen squareBox" data-dojo-attach-event='onclick: _onClickHandler' style="display:none;"></div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="securityOverviewModal">
+    <div class="modal-securityInspector modal-dialog" style="width: 90%;" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Enity Inspector</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-dojo-attach-event='onclick: _onClickHandler'>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Overview on the left of all persitable entities that can be read
+            from the client. Click on a entity name to get an overview of
+            all objects that can be read from the client, values in green
+            are read only. All other values are Read/Write.
+          </p>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-3 ml-auto TableWrapper table-responsive">
+                <table id="EntityOverviewTable" class="display compact"></table>
+              </div>
+              <div class="col-md-8 ml-auto TableWrapper table-responsive">
+                  <table id="ObjectOverviewTable" class="display compact" ></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "generator-mendix": {
+    "promptValues": {
+      "copyright": "TimeSeries",
+      "license": "Apache 2",
+      "author": "A Ramlawi",
+      "boilerplate": "appstore"
+    }
+  }
+}
