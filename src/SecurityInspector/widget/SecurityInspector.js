@@ -163,8 +163,10 @@ define([
                     "aoColumnDefs": [
                         { "sWidth": "100px", "aTargets": [ "_all" ] },
                         { "targets": [ "_all" ], "render": function (data, type, row) {
-                            if (data.toString().slice(-4) === "(RO)") {
-                                return '<span class="ellipsis" style="color: #25a22d;" title="' + data.slice(0, -4) + '">' + data.slice(0, -4) + '</span>';
+                            if (typeof data === "string") {
+                                if (data.toString().slice(-4) === "(RO)") {
+                                    return '<span class="ellipsis" style="color: #25a22d;" title="' + data.slice(0, -4) + '">' + data.slice(0, -4) + '</span>';
+                                }
                             }
                             return '<span class="ellipsis" title="' + data + '">' + data + '</span>';
                         }}

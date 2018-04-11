@@ -1,12 +1,13 @@
 .squareBox{
   position: absolute;
   right: 0;
-  top: 100%;
+  top: 300px;
   margin-top: -100px;
   height: 85px;
   width: 70px;
   color: white;
   border: 2px solid #000;
+  z-index: 999999999;
 }
 .TableWrapper{
   display: inline-block;
