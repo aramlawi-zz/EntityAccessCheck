@@ -14,7 +14,7 @@
 
     Documentation
     ========================
-    Describe your widget here.
+    This widget enables you to view objects from the client side and check your enitity access / security.
 */
 
 // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
@@ -23,25 +23,14 @@ define([
     "mxui/widget/_WidgetBase",
     "dijit/_TemplatedMixin",
 
-    "mxui/dom",
-    "dojo/dom",
-    "dojo/dom-prop",
-    "dojo/dom-geometry",
-    "dojo/dom-class",
-    "dojo/dom-style",
-    "dojo/dom-construct",
-    "dojo/_base/array",
     "dojo/_base/lang",
-    "dojo/text",
-    "dojo/html",
-    "dojo/_base/event",
 
     "SecurityInspector/lib/jquery",
     "dojo/text!SecurityInspector/widget/template/SecurityInspector.html",
     "SecurityInspector/lib/datatables",
     "SecurityInspector/lib/bootstrap"
 
-], function (declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, dojoProp, dojoGeometry, dojoClass, dojoStyle, dojoConstruct, dojoArray, lang, dojoText, dojoHtml, dojoEvent, _jQuery,  widgetTemplate) {
+], function (declare, _WidgetBase, _TemplatedMixin, lang, _jQuery,  widgetTemplate) {
     "use strict";
 
     var $ = _jQuery.noConflict(true);
@@ -205,24 +194,6 @@ define([
             this._contextObj = obj;
             this._executeCallback(callback, "_updateRendering");
         },
-
-        // mxui.widget._WidgetBase.enable is called when the widget should enable editing. Implement to enable editing if widget is input widget.
-        enable: function () {
-            logger.debug(this.id + ".enable");
-        },
-
-        // mxui.widget._WidgetBase.enable is called when the widget should disable editing. Implement to disable editing if widget is input widget.
-        disable: function () {
-            logger.debug(this.id + ".disable");
-        },
-
-
-        // mxui.widget._WidgetBase.uninitialize is called when the widget is destroyed. Implement to do special tear-down work.
-        uninitialize: function () {
-            logger.debug(this.id + ".uninitialize");
-            // Clean up listeners, helper objects, etc. There is no need to remove listeners added with this.connect / this.subscribe / this.own.
-        },
-
         _executeCallback: function (cb, from) {
             logger.debug(this.id + "._executeCallback" + (from ? " from " + from : ""));
             if (cb && typeof cb === "function") {
