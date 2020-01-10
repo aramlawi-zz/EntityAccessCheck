@@ -6,7 +6,7 @@
     ========================
 
     @file      : SecurityInspector.js
-    @version   : 1.0.0
+    @version   : 1.0.1
     @author    : A Ramlawi
     @date      : 2018-3-13
     @copyright : TimeSeries
@@ -70,8 +70,9 @@ define([
             }
 
             // Intitialise Overview table to select the entities to display.
-
+            // Fix: 1.0.1 added retrieve option so it wont be initialized when the instance still lives.
             table = $('#EntityOverviewTable').DataTable({
+                "retrieve" : true,
                 "data": entityList,
                 "select": true,
                 "error": function (xhr, error, thrown) {
@@ -141,6 +142,7 @@ define([
 
         _createDataTable: function (dataArray, headerArray) {
             if (Array.isArray(dataArray) && dataArray.length) {
+                this._hideNoResultsMessage();
                 if ($.fn.DataTable.isDataTable('#ObjectOverviewTable')) {
                     $('#ObjectOverviewTable').DataTable().destroy();
                     $('#ObjectOverviewTable').empty();
@@ -168,7 +170,13 @@ define([
                     $.fn.dataTable.tables({visible: true, api: true}).columns.adjust();
                 });
             } else {
-                alert("No data to display");
+                if ($.fn.DataTable.isDataTable('#ObjectOverviewTable')) {
+                    $('#ObjectOverviewTable').DataTable().destroy();
+                    $('#ObjectOverviewTable').empty();
+                    this._showNoResultsMessage();
+                } else {
+                    this._showNoResultsMessage();
+                }
             }
         },
         _createHeaderArray: function (jsonArray) {
@@ -204,7 +212,16 @@ define([
             $(".squareBox").toggle();
             $("#securityOverviewModal").modal("toggle");
             //$(".modal-securityInspector").toggle();
+        },
+        _showNoResultsMessage: function () {
+            $('#noResultsMessage').show();
+        },
+        _hideNoResultsMessage: function () {
+            $('#noResultsMessage').hide();
         }
+
+
+
     });
 });
 
